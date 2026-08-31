@@ -97,24 +97,10 @@
         }
 
         .wordmark {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
             text-decoration: none;
             font-size: 0.875rem;
             font-weight: 500;
             letter-spacing: -0.012em;
-        }
-
-        .wordmark-mark {
-            width: 31px;
-            height: 31px;
-            display: grid;
-            place-items: center;
-            border: 1px solid var(--line-strong);
-            border-radius: 6px;
-            font-size: 0.8125rem;
-            font-weight: 560;
         }
 
         .nav-link {
@@ -133,8 +119,16 @@
         }
 
         .hero {
-            max-width: 940px;
-            padding-block: 92px 100px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+            align-items: center;
+            gap: clamp(48px, 7vw, 92px);
+            padding-block: 78px 88px;
+        }
+
+        .hero-copy {
+            padding-left: 24px;
+            border-left: 2px solid var(--sage);
         }
 
         h1,
@@ -146,11 +140,26 @@
 
         h1 {
             margin-bottom: 24px;
-            font-size: clamp(2.7rem, 5.1vw, 4rem);
-            line-height: 1.06;
-            letter-spacing: -0.055em;
-            font-weight: 580;
             text-wrap: balance;
+        }
+
+        .course-title {
+            display: block;
+            max-width: 34ch;
+            margin-bottom: 18px;
+            color: var(--sage);
+            font-size: clamp(1rem, 1.55vw, 1.1875rem);
+            line-height: 1.45;
+            letter-spacing: -0.02em;
+            font-weight: 470;
+        }
+
+        .portfolio-title {
+            display: block;
+            font-size: clamp(3.4rem, 6vw, 4.75rem);
+            line-height: 0.98;
+            letter-spacing: -0.065em;
+            font-weight: 560;
         }
 
         .hero-meta {
@@ -166,34 +175,52 @@
             font-weight: 540;
         }
 
+        .hero-figure {
+            margin: 0;
+        }
+
+        .hero-figure img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            object-position: center top;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius);
+            background: var(--surface);
+        }
+
         .projects {
             padding-block: 72px 104px;
             border-top: 1px solid var(--line-strong);
         }
 
         .section-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 24px;
             margin-bottom: 36px;
         }
 
         h2 {
-            margin-bottom: 9px;
+            margin-bottom: 0;
             font-size: clamp(1.75rem, 3vw, 2.25rem);
             line-height: 1.15;
             letter-spacing: -0.04em;
             font-weight: 560;
         }
 
-        .section-heading p {
-            max-width: 520px;
+        .project-count {
             margin-bottom: 0;
-            color: var(--muted);
-            font-size: 0.875rem;
-            line-height: 1.6;
+            color: var(--sage);
+            font-size: 0.8125rem;
+            line-height: 1.4;
+            font-weight: 470;
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 22px;
         }
 
@@ -210,6 +237,10 @@
         .project-card:hover {
             border-color: #94a997;
             transform: translateY(-2px);
+        }
+
+        .project-card:active {
+            transform: translateY(0);
         }
 
         .project-card:focus-visible {
@@ -232,6 +263,27 @@
 
         .project-media--contain img {
             object-fit: contain;
+        }
+
+        .project-card--featured {
+            display: grid;
+            grid-column: 1 / -1;
+            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+        }
+
+        .project-card--featured .project-media {
+            min-height: 326px;
+            aspect-ratio: auto;
+            border-right: 1px solid var(--line);
+            border-bottom: 0;
+        }
+
+        .project-card--featured .project-copy {
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 38px;
         }
 
         .project-card:hover .project-media img {
@@ -294,9 +346,34 @@
             font-weight: 500;
         }
 
-        @media (max-width: 880px) {
-            .project-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+        @media (max-width: 820px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 44px;
+            }
+
+            .hero-copy {
+                max-width: 680px;
+            }
+
+            .hero-figure {
+                max-width: 680px;
+                margin-left: auto;
+            }
+
+            .project-card--featured {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card--featured .project-media {
+                min-height: 0;
+                aspect-ratio: 16 / 9;
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .project-card--featured .project-copy {
+                padding: 28px;
             }
         }
 
@@ -310,11 +387,16 @@
             }
 
             .hero {
-                padding-block: 64px 72px;
+                gap: 32px;
+                padding-block: 56px 64px;
             }
 
-            h1 {
-                font-size: clamp(2.4rem, 12vw, 3.1rem);
+            .hero-copy {
+                padding-left: 18px;
+            }
+
+            .portfolio-title {
+                font-size: clamp(3rem, 15vw, 3.75rem);
             }
 
             .projects {
@@ -332,6 +414,10 @@
 
             .project-copy {
                 min-height: 0;
+            }
+
+            .project-card--featured .project-copy {
+                padding: 23px 22px 25px;
             }
 
             .footer-inner {
@@ -363,8 +449,7 @@
     <header class="site-header">
         <div class="container nav-inner">
             <a class="wordmark" href="./" aria-label="CS 180 portfolio home">
-                <span class="wordmark-mark" aria-hidden="true">CS</span>
-                <span>CS 180 Portfolio</span>
+                CS 180 Portfolio
             </a>
             <nav aria-label="Primary navigation">
                 <a class="nav-link" href="#projects">Projects</a>
@@ -374,19 +459,27 @@
 
     <main>
         <section class="container hero" aria-labelledby="page-title">
-            <h1 id="page-title">CS 180: Computer Vision and Computational Photography Portfolio</h1>
-            <p class="hero-meta">Coursework by <strong>Sriya Kantipudi</strong></p>
+            <div class="hero-copy">
+                <h1 id="page-title">
+                    <span class="course-title">CS 180: Computer Vision and Computational Photography</span>
+                    <span class="portfolio-title">Portfolio</span>
+                </h1>
+                <p class="hero-meta">Created by <strong>Sriya Kantipudi</strong></p>
+            </div>
+            <figure class="hero-figure">
+                <img src="./assets/hero-taj.jpg" alt="Taj Mahal image used for an image-sharpening exercise" width="300" height="300" decoding="async" fetchpriority="high">
+            </figure>
         </section>
 
         <section class="projects" id="projects" aria-labelledby="projects-title">
             <div class="container">
                 <div class="section-heading">
                     <h2 id="projects-title">Projects</h2>
-                    <p>Selected experiments in image formation, reconstruction, and computational photography.</p>
+                    <p class="project-count">3 projects</p>
                 </div>
 
                 <div class="project-grid">
-                    <a class="project-card" href="./0/" aria-label="Open Project 0: Becoming Friends with Your Camera">
+                    <a class="project-card project-card--featured" href="./0/" aria-label="Open Project 0: Becoming Friends with Your Camera">
                         <div class="project-media project-media--contain">
                             <img src="./assets/project-0.png" alt="Portraits comparing camera distance and focal length" width="1080" height="352" loading="lazy" decoding="async">
                         </div>
@@ -423,7 +516,6 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <p class="footer-name">Sriya Kantipudi</p>
-            <p>CS 180 · Fall 2026</p>
         </div>
     </footer>
 </body>

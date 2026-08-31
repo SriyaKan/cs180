@@ -1,1 +1,19 @@
-# cs180
+# CS 180: Computer Vision and Computational Photography Portfolio
+
+A GitHub Pages portfolio by Sriya Kantipudi for UC Berkeley's CS 180 course.
+
+## Preview locally
+
+From this directory, run:
+
+```sh
+python3 -m http.server 4173 --bind 127.0.0.1
+```
+
+Then open `http://127.0.0.1:4173/` in a browser.
+
+## Project pages
+
+The homepage cards link to `0/`, `1/`, and `2/`. Put each project's content in the matching numbered directory with an `index.html` entry point.
+
+The temporary homepage thumbnails are stored in `assets/project-0.png`, `assets/project-1.jpg`, and `assets/project-2.png`; they can be replaced with screenshots of the finished projects without changing the layout.

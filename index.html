@@ -1,16 +1,430 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sriya Kantipudi's CS 180 computer vision and computational photography portfolio.">
+    <meta name="theme-color" content="#ffffff">
+    <title>CS 180: Computer Vision and Computational Photography Portfolio</title>
     <style>
+        @font-face {
+            font-family: "Inter";
+            src: url("./assets/InterVariable.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+        }
+
+        :root {
+            color-scheme: light;
+            --page: #ffffff;
+            --surface: #fafbf9;
+            --ink: #20211f;
+            --muted: #696c67;
+            --line: #e3e6e1;
+            --line-strong: #d3d8d1;
+            --sage: #4f7458;
+            --sage-dark: #385740;
+            --radius: 8px;
+            --container: 1180px;
+            font-synthesis: none;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            min-width: 320px;
+            margin: 0;
+            background: var(--page);
+            color: var(--ink);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 10;
+            padding: 10px 14px;
+            border-radius: 6px;
+            background: var(--ink);
+            color: var(--page);
+            transform: translateY(-160%);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--sage);
+            outline-offset: 3px;
+        }
+
+        .container {
+            width: min(100% - 48px, var(--container));
+            margin-inline: auto;
+        }
+
+        .site-header {
+            border-bottom: 1px solid var(--line);
+            background: var(--page);
+        }
+
+        .nav-inner {
+            min-height: 66px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+        }
+
+        .wordmark {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: -0.012em;
+        }
+
+        .wordmark-mark {
+            width: 31px;
+            height: 31px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line-strong);
+            border-radius: 6px;
+            font-size: 0.8125rem;
+            font-weight: 560;
+        }
+
+        .nav-link {
+            padding-block: 5px;
+            border-bottom: 1px solid transparent;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            font-weight: 450;
+            transition: color 140ms ease, border-color 140ms ease;
+        }
+
+        .nav-link:hover {
+            color: var(--sage-dark);
+            border-color: currentColor;
+        }
+
+        .hero {
+            max-width: 940px;
+            padding-block: 92px 100px;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            margin-bottom: 24px;
+            font-size: clamp(2.7rem, 5.1vw, 4rem);
+            line-height: 1.06;
+            letter-spacing: -0.055em;
+            font-weight: 580;
+            text-wrap: balance;
+        }
+
+        .hero-meta {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-meta strong {
+            color: var(--sage);
+            font-weight: 540;
+        }
+
+        .projects {
+            padding-block: 72px 104px;
+            border-top: 1px solid var(--line-strong);
+        }
+
+        .section-heading {
+            margin-bottom: 36px;
+        }
+
+        h2 {
+            margin-bottom: 9px;
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            line-height: 1.15;
+            letter-spacing: -0.04em;
+            font-weight: 560;
+        }
+
+        .section-heading p {
+            max-width: 520px;
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .project-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius);
+            background: var(--page);
+            text-decoration: none;
+            transition: border-color 140ms ease, transform 140ms ease;
+        }
+
+        .project-card:hover {
+            border-color: #94a997;
+            transform: translateY(-2px);
+        }
+
+        .project-card:focus-visible {
+            outline-offset: 4px;
+        }
+
+        .project-media {
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+            background: var(--surface);
+        }
+
+        .project-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 180ms ease;
+        }
+
+        .project-media--contain img {
+            object-fit: contain;
+        }
+
+        .project-card:hover .project-media img {
+            transform: scale(1.012);
+        }
+
+        .project-copy {
+            min-height: 190px;
+            padding: 23px 22px 25px;
+        }
+
+        .project-copy h3 {
+            margin-bottom: 13px;
+            font-size: 1.0625rem;
+            line-height: 1.45;
+            letter-spacing: -0.024em;
+            font-weight: 500;
+        }
+
+        .project-link {
+            color: var(--sage);
+            font-weight: 590;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 4px;
+        }
+
+        .project-card:hover .project-link {
+            color: var(--sage-dark);
+        }
+
+        .project-copy p {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 0.875rem;
+            line-height: 1.65;
+        }
+
+        .site-footer {
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-inner {
+            min-height: 112px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            color: var(--muted);
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .footer-inner p {
+            margin-bottom: 0;
+        }
+
+        .footer-name {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        @media (max-width: 880px) {
+            .project-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 32px, var(--container));
+            }
+
+            .nav-inner {
+                min-height: 60px;
+            }
+
+            .hero {
+                padding-block: 64px 72px;
+            }
+
+            h1 {
+                font-size: clamp(2.4rem, 12vw, 3.1rem);
+            }
+
+            .projects {
+                padding-block: 56px 72px;
+            }
+
+            .section-heading {
+                margin-bottom: 28px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .project-copy {
+                min-height: 0;
+            }
+
+            .footer-inner {
+                min-height: 104px;
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                gap: 4px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My CS180 Portfolio!</h1>
-    <a href="./1/index.html">Project 1</a>
+    <a class="skip-link" href="#projects">Skip to projects</a>
+
+    <header class="site-header">
+        <div class="container nav-inner">
+            <a class="wordmark" href="./" aria-label="CS 180 portfolio home">
+                <span class="wordmark-mark" aria-hidden="true">CS</span>
+                <span>CS 180 Portfolio</span>
+            </a>
+            <nav aria-label="Primary navigation">
+                <a class="nav-link" href="#projects">Projects</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container hero" aria-labelledby="page-title">
+            <h1 id="page-title">CS 180: Computer Vision and Computational Photography Portfolio</h1>
+            <p class="hero-meta">Coursework by <strong>Sriya Kantipudi</strong></p>
+        </section>
+
+        <section class="projects" id="projects" aria-labelledby="projects-title">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 id="projects-title">Projects</h2>
+                    <p>Selected experiments in image formation, reconstruction, and computational photography.</p>
+                </div>
+
+                <div class="project-grid">
+                    <a class="project-card" href="./0/" aria-label="Open Project 0: Becoming Friends with Your Camera">
+                        <div class="project-media project-media--contain">
+                            <img src="./assets/project-0.png" alt="Portraits comparing camera distance and focal length" width="1080" height="352" loading="lazy" decoding="async">
+                        </div>
+                        <div class="project-copy">
+                            <h3><span class="project-link">Project 0</span>: Becoming Friends with Your Camera</h3>
+                            <p>Exploring how focal length, camera distance, and perspective change the appearance of a subject.</p>
+                        </div>
+                    </a>
+
+                    <a class="project-card" href="./1/" aria-label="Open Project 1: Images of the Russian Empire">
+                        <div class="project-media">
+                            <img src="./assets/project-1.jpg" alt="Colorized historical portrait reconstructed from glass-plate channels" width="300" height="261" loading="lazy" decoding="async">
+                        </div>
+                        <div class="project-copy">
+                            <h3><span class="project-link">Project 1</span>: Images of the Russian Empire</h3>
+                            <p>Reconstructing color photographs by aligning the red, green, and blue channels of historical glass-plate images.</p>
+                        </div>
+                    </a>
+
+                    <a class="project-card" href="./2/" aria-label="Open Project 2: Fun with Filters and Frequencies">
+                        <div class="project-media">
+                            <img src="./assets/project-2.png" alt="Hybrid image combining a leopard and a cat" width="508" height="337" loading="lazy" decoding="async">
+                        </div>
+                        <div class="project-copy">
+                            <h3><span class="project-link">Project 2</span>: Fun with Filters and Frequencies</h3>
+                            <p>Using image filters and frequency-domain techniques to sharpen images, create hybrids, and blend visual content.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p class="footer-name">Sriya Kantipudi</p>
+            <p>CS 180 · Fall 2026</p>
+        </div>
+    </footer>
 </body>
 </html>

@@ -290,6 +290,15 @@
             transform: scale(1.012);
         }
 
+        .project-card--pending:hover {
+            border-color: var(--line-strong);
+            transform: none;
+        }
+
+        .project-card--pending:hover .project-media img {
+            transform: none;
+        }
+
         .project-copy {
             min-height: 190px;
             padding: 23px 22px 25px;
@@ -309,6 +318,11 @@
             text-decoration: underline;
             text-decoration-thickness: 1px;
             text-underline-offset: 4px;
+        }
+
+        .project-label {
+            color: var(--sage);
+            font-weight: 590;
         }
 
         .project-card:hover .project-link {
@@ -481,7 +495,7 @@
                 <div class="project-grid">
                     <a class="project-card project-card--featured" href="./0/" aria-label="Open Project 0: Becoming Friends with Your Camera">
                         <div class="project-media project-media--contain">
-                            <img src="./assets/project-0.png" alt="Portraits comparing camera distance and focal length" width="1080" height="352" loading="lazy" decoding="async">
+                            <img src="./0/media/project-0-strip.jpg" alt="Four portraits comparing camera distance and focal length" width="1280" height="240" loading="lazy" decoding="async">
                         </div>
                         <div class="project-copy">
                             <h3><span class="project-link">Project 0</span>: Becoming Friends with Your Camera</h3>
@@ -489,25 +503,25 @@
                         </div>
                     </a>
 
-                    <a class="project-card" href="./1/" aria-label="Open Project 1: Images of the Russian Empire">
+                    <article class="project-card project-card--pending" aria-label="Project 1: Images of the Russian Empire, coming soon">
                         <div class="project-media">
-                            <img src="./assets/project-1.jpg" alt="Colorized historical portrait reconstructed from glass-plate channels" width="300" height="261" loading="lazy" decoding="async">
+                            <img src="./assets/coming-soon.png" alt="Project 1 coming soon" width="1448" height="1086" loading="lazy" decoding="async">
                         </div>
                         <div class="project-copy">
-                            <h3><span class="project-link">Project 1</span>: Images of the Russian Empire</h3>
+                            <h3><span class="project-label">Project 1</span>: Images of the Russian Empire</h3>
                             <p>Reconstructing color photographs by aligning the red, green, and blue channels of historical glass-plate images.</p>
                         </div>
-                    </a>
+                    </article>
 
-                    <a class="project-card" href="./2/" aria-label="Open Project 2: Fun with Filters and Frequencies">
+                    <article class="project-card project-card--pending" aria-label="Project 2: Fun with Filters and Frequencies, coming soon">
                         <div class="project-media">
-                            <img src="./assets/project-2.png" alt="Hybrid image combining a leopard and a cat" width="508" height="337" loading="lazy" decoding="async">
+                            <img src="./assets/coming-soon.png" alt="Project 2 coming soon" width="1448" height="1086" loading="lazy" decoding="async">
                         </div>
                         <div class="project-copy">
-                            <h3><span class="project-link">Project 2</span>: Fun with Filters and Frequencies</h3>
+                            <h3><span class="project-label">Project 2</span>: Fun with Filters and Frequencies</h3>
                             <p>Using image filters and frequency-domain techniques to sharpen images, create hybrids, and blend visual content.</p>
                         </div>
-                    </a>
+                    </article>
                 </div>
             </div>
         </section>

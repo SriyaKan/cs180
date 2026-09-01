@@ -1,6 +1,6 @@
 # CS 180: Computer Vision and Computational Photography Portfolio
 
-A GitHub Pages portfolio by Sriya Kantipudi for UC Berkeley's CS 180 course.
+A portfolio by Sriya Kantipudi for UC Berkeley's CS 180 course.
 
 ## Preview locally
 

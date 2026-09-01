@@ -22,14 +22,39 @@
         <header class="project-header">
             <p class="project-number">Project 0</p>
             <h1>Becoming Friends with Your Camera</h1>
-            <p class="project-intro">A study of how focal length, camera distance, and perspective change the way a subject is rendered.</p>
+            <p class="project-intro">A relationship between perspective, focal length/zoom, and the center of projection.</p>
         </header>
 
         <div class="project-content">
             <section class="project-section" aria-labelledby="part-one-title">
-                <p class="section-label">Part 1</p>
-                <h2 id="part-one-title">Close Portrait Comparison</h2>
-                <p>Add your portrait comparison, process, and observations here.</p>
+                <h2 id="part-one-title">The Wrong Way vs. The Right Way</h2>
+                <p> Below is a sequence of photos of me initially taken very close up and progressively farther away (but zoomed in to keep my face roughly the same size in each photo). 
+                    When the camera is very close, facial features closer to the camera appear disproportionately large compared to facial features farther away. 
+                    As the camera moves farther away, the distance between these features becomes small relative to their overall distance from the camera.
+                    This reduces perspective distortion and makes my facial proportions appear more natural.
+                </p>
+
+                <div class="media-grid media-grid--strip">
+                    <figure class="media-block">
+                        <img src="./media/Zoom1.jpg" alt="Portrait taken from the closest distance">
+                        <figcaption>Closest</figcaption>
+                    </figure>
+
+                    <figure class="media-block">
+                        <img src="./media/Zoom2.jpg" alt="Portrait taken from farther away">
+                        <figcaption>Farther away</figcaption>
+                    </figure>
+
+                    <figure class="media-block">
+                        <img src="./media/Zoom3.jpg" alt="Portrait taken from farther away">
+                        <figcaption>Farther away</figcaption>
+                    </figure>
+
+                    <figure class="media-block">
+                        <img src="./media/Zoom4.jpg" alt="Portrait taken from the farthest distance">
+                        <figcaption>Farthest away</figcaption>
+                    </figure>
+                </div>
 
                 <!-- Example image markup:
                 <div class="media-grid">
@@ -46,17 +71,48 @@
             </section>
 
             <section class="project-section" aria-labelledby="part-two-title">
-                <p class="section-label">Part 2</p>
                 <h2 id="part-two-title">Architectural Perspective Compression</h2>
-                <p>Add your architecture comparison and explanation here.</p>
+                <p>Here are two photos taken in the Financial District in San Francisco. In the first photo, I stood farther away and zoomed in. In the second photo, I moved closer to the glass high-rise on the left and used no zoom.
+                    From farther away, the buildings in the foreground and the background appear to be closer in size, making the picture look flattened. 
+                    When I move closer, the glass high-rise to the left appears much larger relative to the buildings behind it, giving the scene a stronger sense of depth. 
+                    This happens because of perspective distortion - when the camera is closer, differences in the distances of the buildings to the camera have a greater effect on their size in the photo. 
+                </p>
+
+                <div class="media-grid media-grid--pair">
+                    <figure class="media-block">
+                        <div class="media-frame">
+                            <img src="./media/BuildingZoom1.jpg" alt="Photo taken farther away, zoomed in">
+                        </div>
+                        <figcaption>Photo taken farther away, zoomed in</figcaption>
+                    </figure>
+
+                    <figure class="media-block">
+                        <div class="media-frame">
+                            <img src="./media/BuildingNoZoom.JPG" alt="Photo taken closer, no zoom">
+                        </div>
+                        <figcaption>Photo taken closer, no zoom</figcaption>
+                    </figure>
+                </div>
 
                 <!-- Add images with the media-grid and media-block classes shown above. -->
             </section>
 
             <section class="project-section" aria-labelledby="part-three-title">
-                <p class="section-label">Part 3</p>
                 <h2 id="part-three-title">The Dolly Zoom</h2>
-                <p>Add your dolly zoom result and a short description of how you created it here.</p>
+                <p>I recreated the dolly zoom, a popular cinematic effect used in films like Alfred Hitchcock's <i>Vertigo</i>. 
+                    I slowly moved the camera backward while zooming in so the David protein bars stayed roughly the same size in each frame. 
+                    Moving backward changes the perspective of the scene, while zooming in prevents the bars from appearing smaller. 
+                    As the camera moves farther away, the background looks more compressed, creating the dolly zoom effect.
+
+                </p>
+
+                <figure class="media-block">
+                    <video controls preload="metadata">
+                        <source src="./media/DollyZoom.mp4" type="video/mp4">
+                    </video>
+                    <figcaption></figcaption>
+                </figure>
+                
 
                 <!-- Video example:
                 <figure class="media-block">
